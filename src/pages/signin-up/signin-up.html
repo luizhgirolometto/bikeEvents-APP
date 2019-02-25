@@ -52,10 +52,10 @@
       <div padding>
         <ion-segment [(ngModel)]="opt" color="primary">
           <ion-segment-button value="signin">
-            Sign In
+            Entrar
           </ion-segment-button>
           <ion-segment-button value="signup">
-            Sign Up
+            Cadastrar
           </ion-segment-button>
         </ion-segment>
       </div>
@@ -64,34 +64,34 @@
         <form (ngSubmit)="onSignIn(f)" #f="ngForm" *ngSwitchCase="'signin'">
           <ion-label>Email</ion-label>
           <ion-input type="email" clearInput ngModel required name="email"></ion-input>
-          <ion-label>Password</ion-label>
+          <ion-label>Senha</ion-label>
           <ion-input type="password" clearInput ngModel required [minlength]="6" name="password"></ion-input>
           <div padding text-center>
             <button ion-button large round color="primary" type="submit" icon-left [disabled]="!f.valid">
                 <ion-icon name="log-in"></ion-icon>
-              Sign In
+              Entrar
             </button>
-            <h5 (click)="forgotPassword()">Forgot Password</h5>
+            <h5 (click)="forgotPassword()">Esqueceu sua senha?</h5>
           </div>
         </form>
     
         <form (ngSubmit)="onCreate(f)" #f="ngForm" *ngSwitchCase="'signup'">
-          <ion-label float>Name</ion-label>
+          <ion-label float>Nome</ion-label>
           <ion-input type="text" ngModel name="name" required></ion-input>
     
           <ion-label float>Email</ion-label>
           <ion-input type="email" ngModel name="email" required></ion-input>
     
-          <ion-label float>Password</ion-label>
+          <ion-label float>Senha</ion-label>
           <ion-input type="password" [(ngModel)]="password" name="password" required [minlength]="6"></ion-input>
     
-          <ion-label float>Confirm Password</ion-label>
+          <ion-label float>Confirma Senha</ion-label>
           <ion-input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required [minlength]="6"></ion-input>
     
           <div padding text-center>
             <button ion-button large round color="primary" type="submit" icon-left [disabled]="!f.valid || password != confirmPassword">
               <ion-icon name="person-add"></ion-icon>
-              Sign Up
+              Cadastrar
             </button>
           </div>
         </form>

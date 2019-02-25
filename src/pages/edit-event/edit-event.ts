@@ -175,6 +175,7 @@ export class EditEventPage implements OnInit {
   On submit, we need to convert ISO8601 => Date object. Need to keep dates as ISO8601 until they have passed all checks
   */
   async onSubmit(f: NgForm) {
+    console.log(f.value);
     this.event.name = f.value.name;
     this.event.description = f.value.description ? f.value.description : '';
     this.event.location = f.value.location ? f.value.location : '';

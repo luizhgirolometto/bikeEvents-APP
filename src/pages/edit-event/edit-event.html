@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{isnewEvent? 'Create New' : 'Edit'}} Event</ion-title>
+    <ion-title>{{isnewEvent? 'Novo' : 'Editar'}} Evento</ion-title>
     <ion-buttons end>
       <button *ngIf="!isnewEvent" ion-button icon-only (click)="showConfirm()" color="danger">
         <ion-icon item-left name="trash"></ion-icon>
@@ -92,19 +92,19 @@
       </ion-item> -->
         <ion-item *ngIf="event?.allDay">
           <ion-label>Inicio</ion-label>
-          <ion-datetime displayFormat="MMM DD, YYYY" [ngModel]="event?.starts" name="starts" required></ion-datetime>
+          <ion-datetime displayFormat="D MMM, YYYY" [ngModel]="event?.starts" name="starts" required></ion-datetime>
         </ion-item>
         <ion-item *ngIf="event?.allDay">
           <ion-label>Fim</ion-label>
-          <ion-datetime displayFormat="MMM DD, YYYY" [ngModel]="event?.ends" name="ends" required></ion-datetime>
+          <ion-datetime displayFormat="D MMM, YYYY" [ngModel]="event?.ends" name="ends" required></ion-datetime>
         </ion-item>
         <ion-item *ngIf="!event?.allDay">
           <ion-label>Inicio</ion-label>
-          <ion-datetime displayFormat="MMM DD, YYYY | hh:mm A" minuteValues="0,15,30,45" [ngModel]="event?.starts" name="starts" required></ion-datetime>
+          <ion-datetime displayFormat="D MMM, YYYY | HH:mm " minuteValues="0,15,30,45" [ngModel]="event?.starts" name="starts" required></ion-datetime>
         </ion-item>
         <ion-item *ngIf="!event?.allDay">
           <ion-label>Fim</ion-label>
-          <ion-datetime displayFormat="MMM DD, YYYY | hh:mm A" minuteValues="0,15,30,45" [ngModel]="event?.ends" name="ends" required></ion-datetime>
+          <ion-datetime displayFormat="D MMM YYYY | HH:mm " minuteValues="0,15,30,45" [ngModel]="event?.ends" name="ends" required></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label>Repetir</ion-label>
@@ -127,11 +127,11 @@
         </ion-item>
         <ion-item *ngIf="event?.repeat != 'Never' && event?.endRepeat != 'Never' && !event?.allDay" required>
           <ion-label>Data de repetição final</ion-label>
-          <ion-datetime displayFormat="MMM DD, YYYY | hh:mm A" [ngModel]="event?.endRepeatDate" name="endRepeatDate" required></ion-datetime>
+          <ion-datetime displayFormat="D MMM, YYYY | HH:mm "  [ngModel]="event?.endRepeatDate" name="endRepeatDate" required></ion-datetime>
         </ion-item>
         <ion-item *ngIf="event?.repeat != 'Never' && event?.endRepeat != 'Never' && event?.allDay" required>
             <ion-label>Data de repetição final</ion-label>
-            <ion-datetime displayFormat="MMM DD, YYYY" [ngModel]="event?.endRepeatDate" name="endRepeatDate" required></ion-datetime>
+            <ion-datetime displayFormat="D MMM, YYYY" [ngModel]="event?.endRepeatDate" name="endRepeatDate" required></ion-datetime>
           </ion-item>
       </ion-item-group>
       <ion-item-group>
@@ -176,7 +176,7 @@
       </ion-item> -->
 
     </ion-list>
-    <button ion-button type="submit" large block round [disabled]="!f.valid">{{isnewEvent? 'Create New Event' : 'Save'}}</button>
+    <button ion-button type="submit" large block round [disabled]="!f.valid">{{isnewEvent? 'Criar novo evento' : 'Salvar'}}</button>
   </form>
 
 </ion-content>

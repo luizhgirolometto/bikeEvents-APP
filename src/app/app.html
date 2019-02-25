@@ -9,10 +9,7 @@
         <img style="height: 20%; width: 80%; display: block; margin: auto;" src="./assets/imgs/logo.png">
         <br>
         <ion-title text-center>{{email}}</ion-title>
-        <button ion-button round small outline color="danger" text-center icon-start (click)="onLogout()" *ngIf="isAuthenticated">
-            <ion-icon item-start name="log-out"></ion-icon>
-            Sair
-        </button>
+        
     </ion-header>
     <ion-content class="outer-content">
 
@@ -39,7 +36,14 @@
             </button>
 
         </ion-list>
+        <div text-center>
+        <button ion-button round small outline color="danger" text-center icon-start (click)="onLogout()" *ngIf="isAuthenticated">
+            <ion-icon item-start name="log-out"></ion-icon>
+            Sair
+        </button>
+    </div>
     </ion-content>
+
 </ion-menu>
 
 <ion-nav [root]="rootPage" #nav></ion-nav>
