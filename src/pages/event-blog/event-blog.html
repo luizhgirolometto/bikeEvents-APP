@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <h1 text-center ion-text color="blue"> <ion-icon item-left name="text"></ion-icon> Blog</h1>
+  <ion-searchbar color="white" [(ngModel)]="searchText" (ionInput)="changeSearch()" placeholder="Search by Post Title"></ion-searchbar>
+  <ion-list *ngIf="filteredPosts?.length > 0">
+    <ion-list-header>Posts</ion-list-header>
+    <ion-item *ngFor="let post of filteredPosts" (click)="openPost(post)">
+        <h2>{{post.title}}</h2>
+        <p><ion-icon icon-left name="person" color="primary"></ion-icon> {{post.authorName}}</p>
+        <ion-note item-end>{{post.date | date:'M/d/yy, h:mm a'}}</ion-note>
+      </ion-item>
+  </ion-list>
+  <h4 text-center *ngIf="filteredPosts?.length == 0">No Posts Found</h4>
+
+  <ion-fab *ngIf="event.allowInviteePosts || isAdmin" bottom right #fab>
+    <button color="secondary" ion-fab (click)="addPost()">
+      <ion-icon id="addPost" name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

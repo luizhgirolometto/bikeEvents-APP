@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>About</ion-title>
+      <ion-buttons start>
+        <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <img src="./assets/imgs/logo.png" style="display:block; margin:auto;">
+  <br>
+  <div text-center>
+    <ion-title>Created By: Juan Lopez</ion-title>
+    <ion-title>Version: {{version}}</ion-title>
+    <br>
+    <button ion-button round large (click)="openPrivacyPolicy()">Privacy Policy</button>
+    <ion-title>Questions/Suggestions?</ion-title>
+    <ion-note ion-text color="primary">qrmehelp@gmail.com</ion-note>
+  </div>
+</ion-content>

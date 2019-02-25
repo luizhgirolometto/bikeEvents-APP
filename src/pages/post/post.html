@@ -1,0 +1,65 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons end>
+      <button *ngIf="isAdminOrCreator" ion-button icon-only (click)="openEditPost()">
+        <ion-icon item-left name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header text-center>
+      <h1>
+        <b>{{post?.title}}</b>
+      </h1>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{post?.message}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col center text-center>
+        <ion-note>
+          <ion-icon icon-left name="time" color="primary"></ion-icon>
+          {{post?.date | date:'M/d/yy, h:mm a'}}
+        </ion-note>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          <ion-icon icon-left name="person" color="primary"></ion-icon>
+          {{post?.authorName}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <br>
+  <hr>
+  <h5 text-center>Comments
+    <ion-icon id="addCircle" (click)="addComment()" icon-right name="add-circle" color="primary"></ion-icon>
+  </h5>
+
+  <ion-card color="primary" id="commentCard" *ngFor="let comment of comments">
+
+    <ion-card-content>
+      <ion-row>
+        <ion-col text-left col-10>
+          <p>
+            <b>{{comment?.authorName}}</b>
+            <i>{{comment?.date | date:'M/d/yy, h:mm a'}}</i>
+          </p>
+        </ion-col>
+        <ion-col text-right col-2>
+          <ion-icon *ngIf="event.creator == userEmail || comment.authorId == userId" id="comment" icon-left name="create" (click)="editComment(comment)"></ion-icon>
+        </ion-col>
+      </ion-row>
+
+      {{comment?.message}}
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

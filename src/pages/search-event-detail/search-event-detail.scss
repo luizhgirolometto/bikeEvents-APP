@@ -1,0 +1,32 @@
+page-search-event-detail {
+    .left{
+        border-right: 1px solid grey;
+        padding-left: 0px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .right{
+        padding-left: 10px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    hr {
+        //border: 2px solid red !important;
+       height: 1px !important;
+       width: 100% !important;
+        background: white !important;
+        //display: block !important;
+        //font-size: 2em !important;
+      }
+
+      img{
+        max-height: 35% !important;
+        max-width: 90% !important;
+        display:block; 
+        margin:auto;
+    }
+
+}

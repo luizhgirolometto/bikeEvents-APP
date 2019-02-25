@@ -1,0 +1,122 @@
+<ion-header>
+
+  <ion-navbar>
+      <ion-title>
+          Event Details
+        </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only *ngIf="isManaging" (click)="onOpenEdit()">
+            <ion-icon name="settings"></ion-icon>
+          </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding text-center>
+  <h1 text-center>{{event?.name}}</h1>
+  <div *ngIf="event"> 
+    <p *ngIf="!event?.allDay" text-center>
+        <span text-center>Next Date:</span>
+        <br> Starts: {{startDate | date:'M/d/yy, h:mm a'}}
+        | Ends: {{endDate | date:'M/d/yy, h:mm a'}}
+      </p>
+      <p *ngIf="event?.allDay" text-center>
+        <span text-center>Next Date:</span>
+        <br> Starts: {{startDate | date:'M/d/yy'}} - All Day
+        | Ends: {{endDate | date:'M/d/yy'}} - All Day
+      </p>   
+    </div>
+  <h4>
+    {{event?.description}}
+  </h4>
+  <ion-card *ngIf="event">
+      <ion-card-content>
+          <ion-row no-padding>
+              <ion-col col-4 class="left" >
+                <p><b>Type</b> </p>
+              </ion-col>
+              <ion-col col-8 text-left class="right" >
+                <p>{{event.type}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row no-padding>
+              <ion-col col-4 class="left" >
+                <p><b>Category</b></p>
+              </ion-col>
+              <ion-col col-8 text-left class="right" >
+                <p>{{event.category | titlecase}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row no-padding>
+              <ion-col col-4 class="left" >
+                <p><b>Location</b> </p>
+              </ion-col>
+              <ion-col col-8 text-left class="right" >
+                <p>{{event.location}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row no-padding>
+              <ion-col col-4 class="left" >
+                <p><b>Repeats</b></p>
+              </ion-col>
+              <ion-col col-8 text-left class="right" >
+                <p>{{event.repeat}}</p>
+              </ion-col>
+          </ion-row>
+          <ion-row no-padding>
+              <ion-col col-4 class="left" >
+                <p><b>Event Creator</b></p>
+              </ion-col>
+              <ion-col col-8 text-left class="right" >
+                <p>{{event.creatorName}}</p>
+              </ion-col>
+          </ion-row>
+        </ion-card-content>
+  </ion-card>
+
+  <button *ngIf="!isManaging" ion-button block large round color="danger" icon-start (click)="showConfirm()">
+      <ion-icon item-left name="exit"></ion-icon>
+    Leave Event
+  </button>
+
+  <!-- <ion-card>
+
+        <img src="assets/imgs/festival.png"/>
+    
+        <ion-card-content>
+          <ion-card-title>
+              {{event?.name}}
+          </ion-card-title>
+          <p>
+              {{event?.description}}
+          </p>
+        </ion-card-content>
+    
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='star'></ion-icon>
+              Favorite
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='musical-notes'></ion-icon>
+              Listen
+            </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='share-alt'></ion-icon>
+              Share
+            </button>
+          </ion-col>
+        </ion-row>
+    
+      </ion-card> -->
+
+
+</ion-content>

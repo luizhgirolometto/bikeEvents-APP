@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar no-border-bottom>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openTutorialPage()">
+        <ion-icon color="yellow" style="font-size: 30px !important;" name="help-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-segment [(ngModel)]="segment" (ionChange)="changeEventMode()">
+      <ion-segment-button value="managing">
+        Gerenciar
+      </ion-segment-button>
+      <ion-segment-button value="invited">
+        Convidado
+      </ion-segment-button>
+    </ion-segment>
+
+
+  </ion-navbar>
+
+    <ion-searchbar color="white" [(ngModel)]="searchText" (ionInput)="changeSearch()" placeholder="Search">
+    </ion-searchbar>
+
+
+</ion-header>
+
+
+<ion-content padding [id]='content'>
+  <ion-list *ngIf="(filteredEvents)?.length > 0" >
+      <ion-list-header>Seus Pedais</ion-list-header>
+      <ion-item  *ngFor="let event of filteredEvents" (click)="onLoadEvent(event)">
+          <ion-avatar item-start>
+              <img [src]="event.eventImageUrl">
+            </ion-avatar>
+          <h2>{{event.name}}</h2>
+          <h3>{{event.description}}</h3>
+          <p *ngIf="!event.allDay">{{event?.calculatedStart | date:'M/d/yy, h:mm a'}}</p>
+          <p *ngIf="event.allDay">{{event?.calculatedStart | date:'M/d/yy'}} - All Day</p>
+          <p *ngIf="event.repeat != 'Never'">{{event.repeat }}</p>        
+      </ion-item>
+  </ion-list>
+
+  <h2 *ngIf="(filteredEvents)?.length == 0">Ops.. Nenhum pedal encontrado!</h2>
+
+  <ion-fab bottom right #fab>
+    <button color="secondary" ion-fab (click)="addEvent()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

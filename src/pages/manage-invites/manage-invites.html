@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+      <ion-title>Manage Invites</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding [id]='content'>
+
+  <h2 *ngIf="pendingInviteRequests.length == 0">No pending requests...</h2>
+
+  <ion-list *ngIf="pendingInviteRequests.length > 0">
+    <ion-list-header>
+      <p style="color:#F6AA1C;">Pending</p>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let invite of pendingInviteRequests">
+      <ion-item>
+        <h2>{{invite.eventName}}</h2>
+        <h3>Status: {{invite.status}}</h3>
+        <!-- <p>Requested By: {{invite.requestedBy == 'User'? 'You' : 'Event Admin'}} </p> -->
+        <p>Date Requested: {{invite.requestDate | date: 'shortDate'}} </p>
+
+        <!-- <button item-end ion-button icon-only>
+              <ion-icon name="checkmark"></ion-icon>
+            </button>
+            <button item-end ion-button icon-only>
+                <ion-icon name="close"></ion-icon>
+              </button> -->
+        <ion-avatar item-end *ngIf="invite.requestedBy == 'eventAdmin'">
+          <button item-end ion-button icon-only>
+            <ion-icon name="checkmark"></ion-icon>
+          </button>
+          <button color="danger" item-end ion-button icon-only>
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-avatar>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="cancelInvite(invite)">
+          <ion-icon name="close"></ion-icon>
+          Cancel
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+  <ion-list *ngIf="acceptedInviteRequests.length > 0">
+    <ion-list-header>
+      <p style="color:#40d647;">Accepted</p>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let invite of acceptedInviteRequests">
+      <ion-item>
+        <h2>{{invite.eventName}}</h2>
+        <h3>Status: {{invite.status}}</h3>
+        <p>Date Requested: {{invite.requestDate | date: 'shortDate'}} </p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button (click)="cancelInvite(invite)" ion-button color="primary">
+          <ion-icon name="remove-circle" ></ion-icon>
+          Clear
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
+
+
+  <ion-list *ngIf="rejectedInviteRequests.length > 0">
+    <ion-list-header>
+      <p style="color:#f53d3d;">Rejected</p>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let invite of rejectedInviteRequests">
+      <ion-item>
+        <h2>{{invite.eventName}}</h2>
+        <h3>Status: {{invite.status}}</h3>
+        <p>Date Requested: {{invite.requestDate | date: 'shortDate'}} </p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button (click)="resendInvite(invite)" ion-button color="primary">
+          <ion-icon name="refresh"></ion-icon>
+          Resend
+        </button>
+        <button (click)="cancelInvite(invite)" ion-button color="primary">
+          <ion-icon name="close"></ion-icon>
+          Cancel
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>

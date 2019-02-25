@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar>
+    <!-- <ion-title>eventAttendanceInstanceAdmin</ion-title> -->
+    <!-- <ion-buttons end>
+        <button ion-button (click)="saveChanges()">
+         Save
+        </button>
+      </ion-buttons> -->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="!event.allDay">
+    <h1 text-center>Selected Date:
+      <br> {{selectedDate | date:'MMM dd, y | h:mm a'}}</h1>
+  </div>
+  <div *ngIf="event.allDay">
+    <h1 text-center>Selected Date:
+      <br> {{selectedDate | date:'MMM dd, y'}}</h1>
+  </div>
+
+  <p text-center>Present: <ion-badge color="primary">{{numOfPresent}}</ion-badge> | Missing: <ion-badge color="danger">{{numOfMissing}}</ion-badge> </p>
+  
+  <ion-searchbar color="white" [(ngModel)]="searchText" (ionInput)="changeSearch()" placeholder="Search by User Name">
+    </ion-searchbar>
+
+    <ion-list *ngIf="filteredUsers?.length > 0">
+      <ion-list-header>Invitees Present</ion-list-header>
+      <ion-item *ngFor="let user of filteredUsers">
+        <ion-label>{{user.name}}</ion-label>
+        <ion-icon item-right name="checkmark-circle" color="primary"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <h2 *ngIf="filteredUsers?.length == 0" text-center>No Attendance Records Found</h2>
+
+</ion-content>
+
+<!-- <ion-item>
+    <ion-label>All-day</ion-label>
+    <ion-toggle [(ngModel)]="event.allDay" name="allDay"></ion-toggle>
+  </ion-item> -->

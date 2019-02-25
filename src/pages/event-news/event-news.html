@@ -1,0 +1,131 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      Event Summary
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onOpenInfo()">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<div *ngIf="showSplash" class="splash">
+    <div class="spinner2"></div>
+  </div>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row nowrap align-items-center>
+      <ion-col text-center>
+        <h1 style="margin-right: 3px">{{event?.name}} </h1>
+        <button ion-button icon-only outline rounded (click)="openQrpage()">
+          <ion-icon name="barcode"></ion-icon>
+        </button>
+        <!-- <ion-icon class="titleIcon"  name="information-circle"></ion-icon>    -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <hr>
+  <div text-center>
+    <p>{{event?.location}} </p>
+    <p *ngIf="event && !event?.allDay" text-center>
+      <span *ngIf="event?.repeat != 'Never'" text-center>Next Date: <br></span>
+       Starts: {{startDate | date:'M/d/yy, h:mm a'}}
+      <br> Ends: {{endDate | date:'M/d/yy, h:mm a'}}
+    </p>
+    <p *ngIf="event && event?.allDay" text-center>
+      <span *ngIf="event?.repeat != 'Never'"  text-center>Next Date:  <br> </span>
+       Starts: {{startDate | date:'M/d/yy'}} - All Day
+      <br> Ends: {{endDate | date:'M/d/yy'}} - All Day
+    </p>
+    <p *ngIf="event?.repeat != 'Never'">{{event?.repeat}}</p>
+    <!-- <p *ngIf="!event.endRepeat != 'Never'">End Repeat Date: {{event?.endRepeatDate | date:'M/d/yy, h:mm a'}}</p> -->
+  </div>
+  <img *ngIf="event?.eventImageUrl" [src]="event?.eventImageUrl" />
+  <hr>
+  <ion-grid>
+    <ion-row text-center>
+      <ion-col>
+        <button ion-button large block round (click)="openAttendance()" color="darkRed">
+          <ion-icon item-left name="checkmark-circle" style="margin-right: 4px "></ion-icon>
+          Attendance
+        </button>
+      </ion-col>
+      <ion-col *ngIf="isManaging">
+        <button round block ion-button large color="primary" [navPush]='eventInviteesPage' [navParams]="event">
+          <ion-icon item-left name="contacts" style="margin-right: 4px "></ion-icon>
+          Invitees
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col>
+        <button round block ion-button large [navPush]='eventBlogPage' [navParams]="event" color="blue">
+          <ion-icon item-left name="text" style="margin-right: 4px "></ion-icon>
+          Blog
+        </button>
+      </ion-col>
+      <ion-col>
+        <button round block ion-button large color="yellow" [navPush]='eventPollsPage' [navParams]="event">
+          <ion-icon item-left name="flag" style="margin-right: 4px "></ion-icon>
+          Polls
+        </button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <!-- <h3 text-center>News</h3>
+  <ion-list>
+    <ion-list-header>
+      <button outline round ion-button style="float: right;">Clear All</button>
+    </ion-list-header>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon class="eventIcon" name="flag"></ion-icon>
+        </ion-avatar>
+        <h2>New Poll</h2>
+        <h3>What is your Profession?</h3>
+        <p>{{event?.date | date}}</p>
+        <ion-note item-end>{{event?.time }}</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="text"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon class="eventIcon" name="text"></ion-icon>
+        </ion-avatar>
+        <h2>New Post</h2>
+        <h3>Schedule</h3>
+        <p>{{event?.date | date}}</p>
+        <ion-note item-end>{{event?.time }}</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="text"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+  </ion-list> -->
+
+</ion-content>

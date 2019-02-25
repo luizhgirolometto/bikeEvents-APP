@@ -1,0 +1,95 @@
+<ion-header no-border>
+    <ion-navbar>
+      <ion-buttons end *ngIf="showSkip">
+        <button ion-button (click)="startApp()" color="primary">Skip</button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content no-bounce>
+    <ion-slides *ngIf="this.platform.is('ios')" #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
+  
+      <ion-slide>
+        <img src="assets/imgs/logo.png" class="slide-image-half"/>
+        <h2 class="slide-title">
+          Welcome to <b>QRme!</b>
+        </h2>
+        <p>
+          An event management app built to simplify your life.
+        </p>
+      </ion-slide>
+  
+      <ion-slide>
+        <img src="assets/imgs/i0.jpg" class="slide-image"/>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="assets/imgs/i1.jpg" class="slide-image"/>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="assets/imgs/i2.jpg" class="slide-image"/>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="assets/imgs/i3.jpg" class="slide-image"/>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="assets/imgs/i4.jpg" class="slide-image"/>
+      </ion-slide>
+  
+      <ion-slide>
+        <img src="assets/imgs/logo.png" class="slide-image-half"/>
+        <h2 class="slide-title">Ready to Start?</h2>
+        <button ion-button icon-end large clear (click)="startApp()">
+          Continue
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-slide>
+  
+    </ion-slides>
+    <ion-slides *ngIf="!this.platform.is('ios')" #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
+  
+      <ion-slide>
+        <img src="assets/imgs/logo.png" class="slide-image-half"/>
+        <h2 class="slide-title">
+          Welcome to <b>QRme!</b>
+        </h2>
+        <p>
+          An event management app built to simplify your life.
+        </p>
+      </ion-slide>
+  
+      <ion-slide>
+        <img src="assets/imgs/a0.jpg" class="slide-image"/>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="assets/imgs/a1.jpg" class="slide-image"/>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="assets/imgs/a2.jpg" class="slide-image"/>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="assets/imgs/a3.jpg" class="slide-image"/>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="assets/imgs/a4.jpg" class="slide-image"/>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="assets/imgs/logo.png" class="slide-image-half"/>
+        <h2 class="slide-title">Ready to Start?</h2>
+        <button ion-button icon-end large clear (click)="startApp()">
+          Continue
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-slide>
+  
+    </ion-slides>
+  </ion-content>
+  
